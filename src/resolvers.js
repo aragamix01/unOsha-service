@@ -1,12 +1,14 @@
 import Tags from './models/tags';
-import Menus from './models/menus';
+import Menu from './models/menu';
+import mongoose from 'mongoose';
+
 export default {
   Query: {
     async tags() {
       return await Tags.find();
     },
     async menus() {
-      return await Menus.find().populate({ path: 'tags' });
+      return await Menu.find().populate('tags').exec();
     },
   },
 
@@ -15,7 +17,7 @@ export default {
       return await Tags.create(input);
     },
     async createMenu(root, { input }) {
-      return await Menus.create(input);
+      return await Menu.create(input);
     },
   },
 };

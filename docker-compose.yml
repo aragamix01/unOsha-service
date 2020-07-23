@@ -1,0 +1,6 @@
+unosha-service:
+  image: 036964516027.dkr.ecr.ap-southeast-1.amazonaws.com/unosha-service:latest
+  restart: always
+  container_name: unosha-service
+  ports: 
+    - "4000:4000"
