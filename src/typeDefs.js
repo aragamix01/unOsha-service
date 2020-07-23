@@ -4,6 +4,7 @@ export default gql`
   type Query {
     tags: [Tag]
     menus: [Menu]
+    restaurants: [Restaurant]
   }
   type Mutation {
     createTag(input: TagInput): Tag
@@ -30,5 +31,12 @@ export default gql`
     name: String
     score: Int
     tags: [Tag]
+  }
+
+  type Restaurant {
+    _id: ID
+    name: String
+    menus: [Menu]
+    score: Int
   }
 `;

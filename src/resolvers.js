@@ -1,5 +1,6 @@
 import Tags from './models/tags';
 import Menu from './models/menu';
+import Restaurant from './models/restaurant';
 import mongoose from 'mongoose';
 
 export default {
@@ -8,7 +9,13 @@ export default {
       return await Tags.find();
     },
     async menus() {
-      return await Menu.find().populate('tags').exec();
+      return await Menu.find().populate('tags');
+    },
+    async restaurants() {
+      return await Restaurant.find().populate({
+        path: 'menus',
+        populate: { path: 'tags' },
+      });
     },
   },
 
