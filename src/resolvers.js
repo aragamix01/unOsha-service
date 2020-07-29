@@ -1,3 +1,4 @@
+import Cat from './models/cat';
 import Tags from './models/tags';
 import Menu from './models/menu';
 import Restaurant from './models/restaurant';
@@ -17,6 +18,9 @@ export default {
         populate: { path: 'tags' },
       });
     },
+    async getCats(){
+      return await Cat.find();
+    }
   },
 
   Mutation: {
@@ -26,5 +30,9 @@ export default {
     async createMenu(root, { input }) {
       return await Menu.create(input);
     },
+    async createCat(_,{name}){
+      const cat = new Cat({name});
+      return cat.save();
+    }
   },
 };

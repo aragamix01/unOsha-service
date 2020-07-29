@@ -5,10 +5,12 @@ export default gql`
     tags: [Tag]
     menus: [Menu]
     restaurants: [Restaurant]
+    getCats:[Cat]
   }
   type Mutation {
     createTag(input: TagInput): Tag
     createMenu(input: MenuInput): Menu
+    createCat(name: String): Cat
   }
 
   input MenuInput {
@@ -19,6 +21,11 @@ export default gql`
 
   input TagInput {
     tagName: String
+  }
+
+  type Cat {
+    _id: ID
+    name: String
   }
 
   type Tag {
